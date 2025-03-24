@@ -1,1 +1,73 @@
-/ShapeUnitTestsCSharp.sln
+# Ignore Visual Studio and VS Code settings
+.vscode/
+*.code-workspace
+
+# Build artifacts
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.cache
+
+# Package dependencies
+packages/
+!packages/repositories.config
+
+# Logs and debugging
+*.log
+*.tlog
+*.ds_store
+*.pidb
+*.ilk
+*.pdb
+*.idb
+
+# Test results
+TestResults/
+.trx
+*.coverage
+*.coveragexml
+*.nvuser
+*.nunit.xml
+
+# .NET Core / .NET 5+ files
+project.lock.json
+project.assets.json
+global.json
+appsettings*.json
+
+# Rider and JetBrains files
+.idea/
+*.sln.iml
+
+# NuGet Packages
+**/packages/
+**/project.lock.json
+**/package-lock.json
+.nuget/
+
+# Resharper files
+_ReSharper*/
+
+# Dotnet tools
+.dotnet_tools/
+.dotnet/
+.vscode/
+
+# Ignore compiled dlls and exe files
+*.dll
+*.exe
+*.exe.config
+*.so
+*.dylib
+
+# Ignore publish output
+publish/
+
+# Ignore solution-specific files
+*.vs/
