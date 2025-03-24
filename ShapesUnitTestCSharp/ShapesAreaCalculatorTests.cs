@@ -1,5 +1,4 @@
-using NUnit.Framework;
-using static ShapesCSharp.ShapesAreaCalculator;
+using ShapesCSharp;
 
 namespace ShapesUnitTestCSharp;
 
@@ -11,7 +10,7 @@ public class ShapesAreaCalculatorTests
     {
         double side = 3;
         double expected = 54;
-        double actual = Cube.CalculateArea(side);
+        double actual = ShapesAreaCalculator.CalculateCubeArea(side);
         Assert.AreEqual(expected, actual);
     }
 
@@ -19,6 +18,6 @@ public class ShapesAreaCalculatorTests
     public void CalculateArea_NegativeSide_ThrowsArgumentException()
     {
         double side = -2;
-        Assert.Throws<ArgumentException>(() => Cube.CalculateArea(side));
+        Assert.Throws<ArgumentException>(() => ShapesAreaCalculator.CalculateCubeArea(side));
     }
 }
