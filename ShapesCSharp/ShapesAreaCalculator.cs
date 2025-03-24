@@ -1,31 +1,41 @@
-﻿namespace AreaLibrary;
+﻿using Microsoft.Win32.SafeHandles;
 
-public static class ShapesAreaCalculator
+namespace ShapesCSharp;
+
+public class ShapesAreaCalculator
 {
-    public class Cube
+    public static double CalculateCubeArea(double side)
     {
-        public static double CalculateArea(double side)
-        {
-            if (side < 0) throw new ArgumentException("Side length cannot be negative");
-            return 6 * side * side;
-        }
+        if (side < 0) throw new ArgumentException("Side length cannot be negative");
+        return 6 * side * side;
     }
 
-    public class Parallelogram
+    public static double CalculateParallelogramArea(double baseLength, double height)
     {
-        public static double CalculateArea(double baseLength, double height)
-        {
-            if (baseLength < 0 || height < 0) throw new ArgumentException("Dimensions cannot be negative");
-            return baseLength * height;
-        }
+        if (baseLength < 0 || height < 0) throw new ArgumentException("Dimensions cannot be negative");
+        return baseLength * height;
     }
 
-    public class Pyramid
+    public static double CalculatePyramidArea(double baseArea, double lateralArea)
     {
-        public static double CalculateArea(double baseArea, double lateralArea)
-        {
-            if (baseArea < 0 || lateralArea < 0) throw new ArgumentException("Areas cannot be negative");
-            return baseArea + lateralArea;
-        }
+        if (baseArea < 0 || lateralArea < 0) throw new ArgumentException("Areas cannot be negative");
+        return baseArea + lateralArea;
+    }
+
+    public static void Main()
+    {
+        double cubeSide = 3;
+        double cubeArea = CalculateCubeArea(cubeSide);
+        Console.WriteLine($"Cube area with side {cubeSide} is {cubeArea}");
+
+        double parallelogramBase = 4;
+        double parallelogramHeight = 5;
+        double parallelogramArea = CalculateParallelogramArea(parallelogramBase, parallelogramHeight);
+        Console.WriteLine($"Parallelogram area with base {parallelogramBase} and height {parallelogramHeight} is {parallelogramArea}");
+
+        double pyramidBaseArea = 10;
+        double pyramidLateralArea = 20;
+        double pyramidArea = CalculatePyramidArea(pyramidBaseArea, pyramidLateralArea);
+        Console.WriteLine($"Pyramid area with base area {pyramidBaseArea} and lateral area {pyramidLateralArea} is {pyramidArea}");
     }
 }
