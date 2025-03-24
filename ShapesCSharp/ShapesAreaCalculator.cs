@@ -1,5 +1,5 @@
-﻿using Microsoft.Win32.SafeHandles;
-
+﻿// This file contains the implementation of the ShapesAreaCalculator class, which calculates the area of different shapes.
+// The ShapesAreaCalculator class contains three static methods: CalculateCubeArea, CalculateParallelogramArea, and CalculatePyramidArea.
 namespace ShapesCSharp;
 
 public class ShapesAreaCalculator
