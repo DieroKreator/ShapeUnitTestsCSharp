@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using static AreaLibrary.ShapesAreaCalculator;
+using static ShapesCSharp.ShapesAreaCalculator;
 
 namespace ShapesUnitTestCSharp;
 
