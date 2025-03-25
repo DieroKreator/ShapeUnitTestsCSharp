@@ -20,4 +20,15 @@ public class ShapesAreaCalculatorTests
         double side = -2;
         Assert.Throws<ArgumentException>(() => ShapesAreaCalculator.CalculateCubeArea(side));
     }
+
+    [TestCase(4, 5, 20)]
+    [TestCase(6, 7, 40)]
+    [TestCase(8, 9, 55)]
+    public void testCalculateParalelogramAreaTC(double baseLength, double height, double expectedResult)
+    {
+        // double actual = ShapesAreaCalculator.CalculateParallelogramArea(baseLength, height);
+        // Assert.AreEqual(expectedResult, actual);
+
+        Assert.That(ShapesAreaCalculator.CalculateParallelogramArea(baseLength, height), Is.EqualTo(expectedResult));
+    }
 }
