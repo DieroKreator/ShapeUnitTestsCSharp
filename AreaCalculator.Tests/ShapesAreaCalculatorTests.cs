@@ -5,6 +5,45 @@ namespace ShapesUnitTestCSharp;
 [TestFixture]
 public class ShapesAreaCalculatorTests
 {
+    // Function to read data from a csv file
+    public static IEnumerable<TestCaseData> lerDadosDeTeste(String operação)
+    {
+        String caminhoMassa = "../Interasys/ShapeUnitTestsCSharp/AreaCalculator.Tests/fixtures/"; // Caminho do arquivo csv
+
+        switch (operação)
+        {
+            case '1':
+                caminhoMassa = "massaAreaPyramid.csv";
+                break;
+            case '2':
+                caminhoMassa = "massaAreaCube.csv"; // empty example
+                break;
+        }
+
+        using (var reader = new StreamReader(caminhoMassa))
+        {
+            // pular a primeira linha - cabeçalho
+            reader.ReadLine();
+
+            // repetir as acoes ate a condicao se realizar
+            // no caso, seria ate o arquivo CSV terminar
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+                var values = line.Split(',');
+
+                double baseLength = double.Parse(values[0]);
+                double perimeter = double.Parse(values[1]);
+                double slantHeight = double.Parse(values[2]);
+                double expectedResult = double.Parse(values[3]);
+
+                yield return new TestCaseData(baseLength, perimeter, slantHeight, expectedResult);
+            }
+        }
+
+        return null;
+    }
+
     [Test]
     public void CalculateArea_ValidSide_ReturnsCorrectArea()
     {
