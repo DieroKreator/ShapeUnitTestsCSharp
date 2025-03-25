@@ -32,14 +32,9 @@ public class ShapesAreaCalculatorTests
         Assert.That(ShapesAreaCalculator.CalculateParallelogramArea(baseLength, height), Is.EqualTo(expectedResult));
     }
 
-    [TestCase(4, 5, 20)]
-    [TestCase(6, 7, 40)]
-    [TestCase(8, 9, 55)]
-    public void testCalculatePyramidAreaDDT(double baseLength, double height, double expectedResult)
+    // Teste Data Driven
+    public void testCalculatePyramidSurfaceAreaDDT( double baseLength, double perimeter, double slantHeight, double expectedResult)
     {
-        // double actual = ShapesAreaCalculator.CalculateParallelogramArea(baseLength, height);
-        // Assert.AreEqual(expectedResult, actual);
-
-        Assert.That(ShapesAreaCalculator.CalculateParallelogramArea(baseLength, height), Is.EqualTo(expectedResult));
+        Assert.That(ShapesAreaCalculator.CalculatePyramidSurfaceArea(baseLength, perimeter, slantHeight), Is.EqualTo(expectedResult));
     }
 }
