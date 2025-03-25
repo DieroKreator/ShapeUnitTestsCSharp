@@ -6,17 +6,17 @@ namespace ShapesUnitTestCSharp;
 public class ShapesAreaCalculatorTests
 {
     // Function to read data from a csv file
-    public static IEnumerable<TestCaseData> lerDadosDeTeste(String operação)
+    public static IEnumerable<TestCaseData> lerDadosDeTeste(string operacao)
     {
-        String caminhoMassa = "../Interasys/ShapeUnitTestsCSharp/AreaCalculator.Tests/fixtures/"; // Caminho do arquivo csv
+        String caminhoMassa = "/Users/dierokreator/Programming/Interasys/ShapeUnitTestsCSharp/ShapesUnitTestCSharp/fixtures/"; // Caminho do arquivo csv
 
-        switch (operação)
+        switch (operacao)
         {
-            case '1':
-                caminhoMassa = "massaAreaPyramid.csv";
+            case "1":
+                caminhoMassa += "massaAreaPyramid.csv";
                 break;
-            case '2':
-                caminhoMassa = "massaAreaCube.csv"; // empty example
+            case "2":
+                caminhoMassa += "massaAreaParallelogram.csv";
                 break;
         }
 
@@ -32,12 +32,13 @@ public class ShapesAreaCalculatorTests
                 var line = reader.ReadLine();
                 var values = line.Split(',');
 
-                double baseLength = double.Parse(values[0]);
-                double perimeter = double.Parse(values[1]);
-                double slantHeight = double.Parse(values[2]);
-                double expectedResult = double.Parse(values[3]);
+                // double baseLength = double.Parse(values[0]);
+                // double perimeter = double.Parse(values[1]);
+                // double slantHeight = double.Parse(values[2]);
+                // double expectedResult = double.Parse(values[3]);
 
-                yield return new TestCaseData(baseLength, perimeter, slantHeight, expectedResult);
+                yield return new TestCaseData(double.Parse(values[0]), double.Parse(values[1]), 
+                                              double.Parse(values[2]), double.Parse(values[3]));
             }
         }
     }
@@ -48,7 +49,7 @@ public class ShapesAreaCalculatorTests
         double side = 3;
         double expected = 54;
         double actual = ShapesAreaCalculator.CalculateCubeArea(side);
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 
     [Test]
@@ -70,8 +71,8 @@ public class ShapesAreaCalculatorTests
     }
 
     // Teste Data Driven
-    [TestCaseSource(nameof(lerDadosDeTeste), new object[] { "1" })]
-    public void testCalculatePyramidSurfaceAreaDDT( double baseLength, double perimeter, double slantHeight, double expectedResult)
+    [Test, TestCaseSource(nameof(lerDadosDeTeste), new object[] { "1" })]
+    public void testCalculatePyramidSurfaceAreaDDT(double baseLength, double perimeter, double slantHeight, double expectedResult)
     {
         Assert.That(ShapesAreaCalculator.CalculatePyramidSurfaceArea(baseLength, perimeter, slantHeight), Is.EqualTo(expectedResult));
     }
