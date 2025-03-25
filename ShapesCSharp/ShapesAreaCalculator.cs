@@ -16,9 +16,12 @@ public class ShapesAreaCalculator
         return baseLength * height;
     }
 
-    public static double CalculatePyramidArea(double baseArea, double lateralArea)
+    public static double CalculatePyramidSurfaceArea(double baseArea, double perimeter, double slantHeight)
     {
-        if (baseArea < 0 || lateralArea < 0) throw new ArgumentException("Areas cannot be negative");
+        if (baseArea < 0 || perimeter < 0 || slantHeight < 0)
+            throw new ArgumentException("Values cannot be negative");
+
+        double lateralArea = 0.5 * perimeter * slantHeight;
         return baseArea + lateralArea;
     }
 
@@ -33,9 +36,10 @@ public class ShapesAreaCalculator
         double parallelogramArea = CalculateParallelogramArea(parallelogramBase, parallelogramHeight);
         Console.WriteLine($"Parallelogram area with base {parallelogramBase} and height {parallelogramHeight} is {parallelogramArea}");
 
-        double pyramidBaseArea = 10;
-        double pyramidLateralArea = 20;
-        double pyramidArea = CalculatePyramidArea(pyramidBaseArea, pyramidLateralArea);
-        Console.WriteLine($"Pyramid area with base area {pyramidBaseArea} and lateral area {pyramidLateralArea} is {pyramidArea}");
+        double pyramidBaseArea = 6;
+        double pyramidPerimeter = 12;
+        double pyramidSlantHeight = 5;  
+        double pyramidSurfaceArea = CalculatePyramidSurfaceArea(pyramidBaseArea, pyramidPerimeter, pyramidSlantHeight);
+        Console.WriteLine($"Pyramid surface area with base area {pyramidBaseArea}, perimeter {pyramidPerimeter}, and slant height {pyramidSlantHeight} is {pyramidSurfaceArea}");
     }
 }
