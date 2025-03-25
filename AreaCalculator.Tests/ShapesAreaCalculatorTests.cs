@@ -40,8 +40,6 @@ public class ShapesAreaCalculatorTests
                 yield return new TestCaseData(baseLength, perimeter, slantHeight, expectedResult);
             }
         }
-
-        return null;
     }
 
     [Test]
