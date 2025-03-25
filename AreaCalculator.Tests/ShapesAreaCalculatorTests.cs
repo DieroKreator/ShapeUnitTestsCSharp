@@ -70,6 +70,7 @@ public class ShapesAreaCalculatorTests
     }
 
     // Teste Data Driven
+    [TestCaseSource(nameof(lerDadosDeTeste), new object[] { "1" })]
     public void testCalculatePyramidSurfaceAreaDDT( double baseLength, double perimeter, double slantHeight, double expectedResult)
     {
         Assert.That(ShapesAreaCalculator.CalculatePyramidSurfaceArea(baseLength, perimeter, slantHeight), Is.EqualTo(expectedResult));
